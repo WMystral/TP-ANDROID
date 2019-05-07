@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Desoxyribonucleique</string>
+    <string name="a">a</string>
+    <string name="t">t</string>
+    <string name="g">g</string>
+    <string name="c">c</string>
+    <string name="pref_couleur">couleur préférence</string>
+    <string name="desactiver_buttons">désactiver les boutons</string>
+    <string name="disabla_string">disabled A</string>
+    <string name="disablt_string">disabled T</string>
+    <string name="disablc_string">disabled C</string>
+    <string name="disabg_string">disabled G</string>
+</resources>

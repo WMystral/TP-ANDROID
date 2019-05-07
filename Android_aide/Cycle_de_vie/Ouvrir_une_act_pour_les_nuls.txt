@@ -1,0 +1,109 @@
+1: AVOIR UNE ACTIVITE A OUVRIR
+	1a: Créer une nouvelle classe (nouveau fichier) java, qui est un extends de Activity.
+
+	1b: Ton fichier devrait ressembler à ça :
+
+		package truc.truc.truc;
+
+		import ...;
+
+		public class NomClasseActivity extends Activity {
+
+		    @Override
+		    protected void onCreate(Bundle savedInstanceState) {
+		        super.onCreate(savedInstanceState);
+		        setContentView(R.layout.layout_surement_tres_beau);
+
+		        ...
+		    }
+		}
+
+	1c: dire à android que tu as créer une activité
+		Dans app/manifests/AndroidManifest.xml
+
+		tu vas trouver un truc qui ressemble à sa:
+
+		...
+		<activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        ...
+
+        eh bah, tu rajoute ton activité: 
+
+        ...
+		<activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".NomClasseActivity" />
+        ...
+
+        donc, juste la ligne <activity android:name=".NomClasseActivity" />, et faut adapter avec la nom de ta classe bien sur...
+
+2:LANCER L'ACTIVITE
+
+	encore une fois, il faut adapter avec le nom de ta classe:
+
+    Intent i = new Intent(activity, NomClasseActivity.class); 
+    activity.startActivity(i);
+
+    activity étant l'activité dans laquelle tu trouve actuellement,
+    si on était dans un MainActivity par exemple, on pourrait juste utiliser this:
+
+    Intent i = new Intent(this, NomClasseActivity.class); 
+    this.startActivity(i);
+
+    (
+
+    	si tu ferme pas l'activité dans laquelle tu était, genre:
+
+    	Intent i = new Intent(this, NomClasseActivity.class); 
+    	this.startActivity(i);
+    	this.finish();
+
+    	elle reste ouverte en fonds, et en cliquant sur le bouton retour de son portable, l'user peut y retourner
+
+    )
+
+
+Bonus 3:
+
+	Tu peut faire passer des variables d'une activité_1 vers une activité_2 quand 1 créer en mettant tout d'abord dans 1 au moment de créer l'intent:
+
+	Intent i = new Intent(activity, NomClasseActivity.class);
+
+	i.putExtra("index_ou_est_ranger_la_variable_x",variable_x);
+    
+    activity.startActivity(i);
+
+
+    Et une fois dans l'activité_2:
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.layout_surement_tres_beau);
+
+        Intent i = this.getIntent();
+        i.getStringExtra("index_ou_est_ranger_la_variable_x");
+
+	    ...
+	}
+
+
+    ici on va dire que variable_x était du type String, mais avec autre chose, on remplacera juste String dans le nom de la méthode
+    attention, getIntExtra, a besoin d'une valeur par défaut, si jamais il trouve pas ce que tu demande,
+    on feras donc : i.getIntExtra("index_ou_est_ranger_la_variable_x",0);
+
+
+
+    NORMALEMENT, j'ai tout dis, bonne chance
+    -Jordan Demartin

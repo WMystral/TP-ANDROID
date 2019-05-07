@@ -1,0 +1,62 @@
+Interface tactile
+
+
+
+__La gestuelle
+
+Touch
+Long press
+Double Touch
+Swipe/Drag
+Long press drag
+Double Touch drag
+Fling
+
+Pinch open
+Pinch close
+multi drag
+
+
+
+__événements basiques
+
+L'if OnTouchListener (classe View) possède la méthode suivante:
+
+boolean onTouch(View v, MotionEvent e);
+
+la valeur de retour indique si le contact est géré par ce contrôleur : 
+renvoyer false veut dire que
+-le même événement sera proposé à un autre contrôleur
+-les futurs événements liés au même contact ne seront pas transmis à ce contrôleur.
+
+La classe MotionEvent contient:
+int getActionMasked()
+-> ACTION_DOWN
+   ACTION_UP
+   ACTION...
+
+  int getActionIndex()
+  int getPointerId(int index)
+  int findPointerById(int id)
+  int getPointerCount()
+
+  float getX(int index)
+  float getY(int index)
+  float getHistoricalX(int index, int chronology)
+  float getHistoricalY(int index, int chronology)
+  int getHistorySize()
+  float getPressure()
+  float getHistoricalPressure(int index, int chronology)
+  long getEventTime()
+
+
+GestureDetector
+
+Un détecteur de geste travaille en collaboration avec deux contrôleurs:
+	-un contrôleur qui surveille et transmet les ev au détecteur (OnTouchListener)
+	-un contrôleur qui surveille le détecteur et détecte les réponses appropriées (OnGestureListener)
+
+Dans GestureDetector, on trouve:
+GestureDetector((Context c, OnGestureListner o))
+boolean OnTouchEvent(MotionEvent e)
+void setIsLongPressEnabled(boolean isIt)

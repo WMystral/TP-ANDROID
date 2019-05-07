@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">arrow_app</string>
+    <string name="left">&#8592;</string>
+    <string name="right">&#8594;</string>
+</resources>

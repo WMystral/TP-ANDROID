@@ -1,0 +1,11 @@
+Bases de données
+
+
+Utiliser SQLLITE
+
+Types dispos sont:
+	TEXT
+	INTEGER
+	REAL
+		(à extraire en string, long, double)
+

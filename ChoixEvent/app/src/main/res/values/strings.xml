@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ChoixEvent</string>
+    <string name="carre">Carré</string>
+    <string name="rond">Rond</string>
+    <string name="triangle">Triangle</string>
+    <string name="croix">Croix</string>
+</resources>

@@ -1,0 +1,26 @@
+Tous les cours que j'ai pris sont dans le dossier Cours android
+
+Mise en page:
+	utiliser un layout
+
+Dessin:
+	dessiner dans une vue
+		(Dessin/classe_view_pour_dessin_simple.java)
+
+Evenements:
+	mettre un listener sur un truc, (dans mes fichiers, un spinner) et modifier la vue en conséquence
+
+Tactile:
+	utiliser les touch listener, gesture listener .. (Tp4ex2n, bonne chance, j'ai la flemme de récupérer juste les fichiers importants)
+
+Cycle de vie:
+	j'ai pas fait le tp, mais utiliser onSaveInstance(Bundle Paquet){...} et onRestoreInstance(Bundle Paquet){...} pour sauvgarder des données entre interruptions
+	Et aussi, (et surtout), ouvrir une activité, Cycle_de_vie/Ouvrir_une_act_pour_les_nuls.txt
+
+Preferences:
+	utiliser un preferenceScreen en xml, une preferenceActivity en java, peut-être un onSharedPreferencesChanged,
+	J'ai pas tout mais je met une petite utilisation des deux premiers dans le dossier preferences
+
+Base de données:
+	Je pourrais pas expliquer comment sa marche..
+	Mais j'ai finis le Tp en entier, je met mon resultat dans le dossier BD

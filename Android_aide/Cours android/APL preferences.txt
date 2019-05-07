@@ -1,0 +1,100 @@
+PREFERENCES
+
+Définition:
+
+dans res/xml/preferences.xml:
+
+<?xml version="1.0" encoding="utf-8" ?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="/@string/pref_sms_storage_title"
+        android:key="pref_key_storage_settings" >
+
+    <CheckBoxPreference
+        android:key="pref_sync"
+        android:title="/@string/pref_sync"
+        android:summary="/@string/pref_sync_sum"
+        android:defaultValue="true" />
+
+    <ListPreference
+        android:dependency="pref_sync"
+        android:key="pref_syncConnectionType"
+        android:title="/@string/pref_syncConnectionType"
+        android:dialogTitle="/@string/pref_syncConnectionType"
+        android:entries="/@array/pref_syncConnectionTypes_entries"
+        android:entryValues="/@array/pref_syncConnectionTypes_values"
+        android:defaultValue="/@string/pref_syncConnectionTypes_default" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
+
+CheckBoxPreference permet le stockage d'un booléen
+EditTextPreference permet le stockage d'un string
+ListPreference permet le stockage d'un booléen,float,int,long,String ou String Set.
+
+Accès aux prèférences:
+Les préférences stockées par le système sont représentées par un SharedPreferences.
+
+Ex: SharedPreferences pref = PreferenceManager.getDefaultSharedPrefences(this);
+	String syncPref = pref.getString(MainActivity.SYNC_KEY,"");
+
+Pour que ce stockage soit crée et peuplé, il faut penser à l'initialiser...
+
+
+Activité de configuration:
+
+Cettte activité peut être générée en se basant sur le fichier de description des préferences.
+
+Ex: public class SettingsActivity extends PreferenceActivity{
+	@override
+	public void onCreate(Bundle state){
+		super.onCreate(state);
+		this.addPreferencesFromResource(R.xml.preferences);
+	}
+}
+
+Les contrôleurs de cette activité changent les préférences dans le stockage, mais ils ne touchent pas aux autres activités.
+Celle_ci peuvent utiliser des OnSharedPreferencesChangeListener pour surveiller les changements
+
+
+Barre d'action:
+
+un menu d'action est défini en xml:
+
+Ex: ...
+    <menu
+    	xmlns:android="..."
+    	xmlns:app="..."
+    	xmlns:tools="..."
+    	tools:context".MainActivity">
+
+    <item
+    	android:id="@+id/action_config"
+    	android:title="@string/titre_config"
+    	android:showAsAction"never" />
+
+	</menu>
+
+Dans l'activité:
+
+Ex:@override 
+public boolean onCreateOptionsMenu(Menu menu){
+	this.getMenuInflater().inflate(R.menu.menu_liste.xml,menu);
+	return true;
+}
+@override
+public boolean OnOptionsItemSelected(MenuItem item){
+	int id = item.getItemId();
+	if(id=R.id.action_config){
+		...
+		return true;
+	}else{
+		return super.onOptionsItemSelected(item);
+	}
+}
+
+Dans onCreate :
+	PreferenceManager.setDefaultValues(this.R.xml.preferences,false);

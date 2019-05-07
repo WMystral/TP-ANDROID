@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">
+        Couleurs
+    </string>
+    <string name="action_ajouter">
+        Ajouter
+    </string>
+    <string name="title_activity_delete">Delete</string>
+    <string name="supprimer">Supprimer</string>
+    <string name="annuler">Annuler</string>
+</resources>
